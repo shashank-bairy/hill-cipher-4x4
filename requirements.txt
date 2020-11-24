@@ -22,9 +22,6 @@ lazy-object-proxy==1.4.3
 log-symbols==0.0.14
 MarkupSafe==1.1.1
 mccabe==0.6.1
-mkl-fft==1.2.0
-mkl-random==1.1.1
-mkl-service==2.3.0
 numpy==1.19.4
 pycparser==2.20
 pycryptodome==3.9.4

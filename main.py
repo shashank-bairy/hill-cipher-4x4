@@ -18,7 +18,7 @@ def sessions():
     if request.method == "POST":
         key_matrix = process_key(request.form.get('key'))
         if(not hc.check_key(key_matrix)):
-            flash("invalid key: key used is not intvertabe mod 26","danger")
+            flash("Invalid Key: Key used is not invertible mod 26","danger")
             print()
             return render_template('session.html', messages=messages)
         decrypted_messages = []
@@ -44,7 +44,7 @@ def handle_my_custom_event(response, methods=['GET', 'POST']):
     message['message'] = encrypted_text
     message['extra'] = extra
     if(not hc.check_key(key_matrix)):
-        message['message'] = 'invalid key: key used is not intvertabe mod 26, message could not be sent'
+        message['message'] = 'Invalid key: Key used is not invertible mod 26. Message not sent!'
         socketio.emit('my response', message, callback=messageReceived)
         return
     messages.append(message)
@@ -52,4 +52,4 @@ def handle_my_custom_event(response, methods=['GET', 'POST']):
     socketio.emit('my response', message, callback=messageReceived)
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    socketio.run(app)

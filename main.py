@@ -52,4 +52,4 @@ def handle_my_custom_event(response, methods=['GET', 'POST']):
     socketio.emit('my response', message, callback=messageReceived)
 
 if __name__ == '__main__':
-    socketio.run(app)
+    socketio.run(app, use_reloader=False)

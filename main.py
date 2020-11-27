@@ -1,15 +1,13 @@
 from flask import Flask, render_template, request, flash
 from flask_socketio import SocketIO
-from flask_cors import CORS, cross_origin
-import numpy as np 
+import numpy as np
+import os
 
 import hill_cipher as hc
 from utils import process_key
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
-cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
+app.config['SECRET_KEY'] = os.environ.get('SECRET')
 socketio = SocketIO(app)
 
 messages = []
@@ -55,4 +53,4 @@ def handle_my_custom_event(response, methods=['GET', 'POST']):
     socketio.emit('my response', message, callback=messageReceived)
 
 if __name__ == '__main__':
-    socketio.run(app, use_reloader=False)
+    app.run()

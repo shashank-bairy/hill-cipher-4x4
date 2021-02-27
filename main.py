@@ -38,7 +38,7 @@ def messageReceived(methods=['GET', 'POST']):
 @socketio.on('my event')
 def handle_my_custom_event(response, methods=['GET', 'POST']):
     key_matrix = process_key(response['key'])
-    encrypted_text, extra = hc.encrypt(response['message'], key_matrix)
+    encrypted_text, extra = hc.encrypt(response['message'].upper(), key_matrix)
     
     message = {}
     message['user_name'] = response['user_name']
